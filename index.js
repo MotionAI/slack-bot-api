@@ -15,6 +15,8 @@ var EventEmitter = require('events').EventEmitter;
 function Bot(params) {
     this.token = params.token;
     this.name = params.name;
+    this.clientID = params.clientID;
+    this.clientSecret = params.clientSecret;
 
     assert(params.token, 'token must be defined');
     this.login();
