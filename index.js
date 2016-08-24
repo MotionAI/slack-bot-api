@@ -279,9 +279,6 @@ Bot.prototype.postMessageToUser = function(name, text, params, cb) {
 Bot.prototype.postMessageToChannel = function(name, text, params, cb) {
     return this._post('channel', name, text, params, cb);
 };
-Bot.prototype.postMessageToChannelById = function(id, text, params, cb) {
-    return this._post('channel_id', id, text, params, cb);
-};
 
 /**
  * Posts a message to group by name
