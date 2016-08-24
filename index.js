@@ -14,7 +14,7 @@ var EventEmitter = require('events').EventEmitter;
  */
 function Bot(params) {
     this.token = params.token;
-    this.name = params.name;
+    // this.name = params.name;
     this.clientID = params.clientID;
     this.clientSecret = params.clientSecret;
 
@@ -267,6 +267,9 @@ Bot.prototype.postMessageToUser = function(name, text, params, cb) {
 Bot.prototype.postMessageToChannel = function(name, text, params, cb) {
     return this._post('channel', name, text, params, cb);
 };
+Bot.prototype.postMessageToChannelById = function(id, text, params, cb) {
+    return this._post('channel_id', id, text, params, cb);
+};
 
 /**
  * Posts a message to group by name
@@ -294,6 +297,7 @@ Bot.prototype._post = function(type, name, text, params, cb) {
     var method = ({
         'group': 'getGroupId',
         'channel': 'getChannelId',
+        'channelId': 'getChannel',
         'user': 'getChatId',
         'slackbot': 'getUserId'
     })[type];
