@@ -137,6 +137,18 @@ Bot.prototype.getGroup = function(name) {
 };
 
 /**
+ * Get user name by id
+ * @param {string} id
+ * @returns {string} name
+ */
+Bot.prototype.getUsernameById = function(id, cb) {
+    if (this.users) {
+        return find(this.users, { id: id }).name;
+    }
+    return this._api('users.list');
+};
+
+/**
  * Get user by id
  * @param {string} id
  * @returns {object}
@@ -297,7 +309,6 @@ Bot.prototype._post = function(type, name, text, params, cb) {
     var method = ({
         'group': 'getGroupId',
         'channel': 'getChannelId',
-        'channelId': 'getChannel',
         'user': 'getChatId',
         'slackbot': 'getUserId'
     })[type];
